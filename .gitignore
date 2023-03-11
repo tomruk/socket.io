@@ -12,3 +12,7 @@ coverage
 .idea
 .nyc_output
 dist/
+/build
+/src
+/.vscode/*
+!/.vscode/launch_example.json

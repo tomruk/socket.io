@@ -38,6 +38,7 @@
   },
   "scripts": {
     "compile": "rimraf ./dist && tsc",
+    "compile:debug": "rimraf ./build && tsc -p tsconfig.debug.json",
     "test": "npm run format:check && npm run compile && npm run test:types && npm run test:unit",
     "test:types": "tsd",
     "test:unit": "nyc mocha --require ts-node/register --reporter spec --slow 200 --bail --timeout 10000 test/index.ts",
@@ -56,6 +57,7 @@
   "devDependencies": {
     "@types/mocha": "^9.0.0",
     "expect.js": "0.3.1",
+    "express": "^4.18.2",
     "mocha": "^10.0.0",
     "nyc": "^15.1.0",
     "prettier": "^2.3.2",

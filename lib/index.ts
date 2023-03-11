@@ -43,7 +43,18 @@ import { patchAdapter, restoreAdapter, serveFile } from "./uws";
 
 const debug = debugModule("socket.io:server");
 
-const clientVersion = require("../package.json").version;
+let packageJson;
+try {
+  // Normally this should not fail.
+  packageJson = require("../package.json");
+} catch (e) {
+  // If we're doing a debug run: `npm run compile:debug`,
+  // the output directories are: build/debug/{src, lib}.
+  // We need to go 3 directories above to find package.json
+  packageJson = require("../../../package.json");
+}
+
+const clientVersion = packageJson.version;
 const dotMapRegex = /\.map/;
 
 type ParentNspNameMatchFn = (
